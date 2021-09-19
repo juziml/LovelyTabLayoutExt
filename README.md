@@ -25,7 +25,7 @@ FlycoTabLayout 演示
 ### 正文
 
  #### 思路拆解：
-* 介于此功能耦合点仅仅是`TabLayoutMediator`，选择使用拓展包装`TabLayoutMediator`，轻量且无倾入性，API还便捷
+* 介于此功能耦合点仅仅是`TabLayoutMediator`，选择使用拓展包装`TabLayoutMediator`，轻量且无侵入性，API还便捷
 * 自定义`TabLayoutMediator`,设置`customView`，放入自己的`TextView`
 * 内部自动添加一个`addOnTabSelectedListener`,在选中后使用动画渐进式的改变字体大小，同理取消选中时还原
 
