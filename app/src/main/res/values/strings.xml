@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">bbbb2</string>
+    <string name="test_long_txt">文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本</string>
+    <string name="test_short_txt">release 文本</string>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <!--键盘监听-->
+    <item name="tag_keyboard_tree_listener" type="id" />
+</resources>

@@ -1,0 +1,20 @@
+# 所有的iml 文件
+*.iml
+# 所有的build 文件夹
+build
+# 整个 .gradle 文件夹
+.gradle
+# 整个 androidTest文件夹
+andoridTest
+#idea caches
+.idea/caches
+.idea/libraries
+.idea/modules
+
+#忽略本地配置
+local.properties
+
+gradlew.bat
+
+#忽略 ndk 编译内容
+.externalNativeBuild

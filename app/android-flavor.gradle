@@ -1,0 +1,52 @@
+apply plugin:'com.android.application'
+
+android {
+    signingConfigs {
+        b2 {
+            keyAlias 'android'
+            keyPassword 'android'
+            storeFile file("test.jks")
+            storePassword 'android'
+        }
+        b3 {
+            keyAlias 'android'
+            keyPassword 'android'
+            storeFile file("test.jks")
+            storePassword 'android'
+        }
+        b6 {
+            keyAlias 'android'
+            keyPassword 'android'
+            storeFile file("test.jks")
+            storePassword 'android'
+        }
+    }
+    flavorDimensions "channel"
+    productFlavors{
+        b2{
+            dimension "channel"
+            versionCode 1
+            versionName "2.0"
+            applicationId "com.channel.b2"
+            //控制manifest 占位符
+            signingConfig signingConfigs.b2
+
+
+        }
+        b3 {
+            versionCode 1
+            versionName "3.0"
+            dimension "channel"
+            applicationId "com.channel.b3"
+            signingConfig signingConfigs.b3
+        }
+        b6{
+            versionCode 1
+            versionName "6.0"
+            dimension "channel"
+            applicationId "com.channel.b6"
+            signingConfig signingConfigs.b6
+        }
+    }
+
+}

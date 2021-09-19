@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent">
+<!--
+设置给默认 tabView的 TextView
+ app:tabTextAppearance="@style/tabLayoutText"
+
+         app:tabIndicatorGravity="stretch"
+
+   -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlNormal"
+        app:tabTextAppearance="@style/tabLayoutText"
+        android:layout_width="match_parent"
+        app:tabMode="scrollable"
+        app:tabIndicatorColor="@color/white"
+        android:background="#66CC7E"
+        android:layout_height="55dp"/>
+<com.google.android.material.tabs.TabLayout
+    android:id="@+id/tl"
+    app:tabIndicator="@drawable/ll_tab_indicator_cat_paw"
+    android:layout_width="match_parent"
+    app:tabMode="scrollable"
+   app:tabIndicatorColor="@color/white"
+    android:background="#E04648"
+    android:layout_height="55dp"/>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl2"
+        app:tabIndicator="@drawable/ll_tab_indicator_block"
+        android:layout_width="match_parent"
+        app:tabIndicatorGravity="center"
+        app:tabMode="scrollable"
+        app:tabIndicatorColor="#a0999999"
+        android:background="#333333"
+        android:layout_height="55dp"/>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
+        android:background="@color/teal_700"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
