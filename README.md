@@ -16,6 +16,7 @@ FlycoTabLayout 演示
 
 
 ![tablayout.gif](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8e237249806744b98d0acb2f459aed1d~tplv-k3u1fbpfcp-watermark.image?)
+
 不过稍微不同的是，上图中第二第三栏选中后的字体是有放大效果的。
 
 这是利用`TabLayout.Tab`的`customView`属性达到的。下文便是实现的思路与过程记录。
