@@ -21,26 +21,6 @@ interface CustomTabViewConfig<T : View> {
     fun onTabInit(tabView: T, position: Int)
 }
 
-fun TabLayout.createMediator(
-    vp: ViewPager2,
-    onInit: (tab: TabLayout.Tab, position: Int) -> Unit
-): TabLayoutMediator {
-    return TabLayoutMediator(this, vp) { tab, pos ->
-        onInit(tab, pos)
-    }
-}
-
-fun <T : View> TabLayout.createMediatorByCustomTabView(
-    vp: ViewPager2,
-    config: CustomTabViewConfig<T>
-): TabLayoutMediator {
-    return TabLayoutMediator(this, vp) { tab, pos ->
-        val tabView = config.getCustomView(tab.view.context)
-        tab.customView = tabView
-        config.onTabInit(tabView, pos)
-    }
-}
-
 class FixedWidthTextTabView(context: Context) : FrameLayout(context) {
     /**
      * 用于测量时能获得最大尺寸,
@@ -51,11 +31,9 @@ class FixedWidthTextTabView(context: Context) : FrameLayout(context) {
     val dynamicSizeTextView: ScaleTexViewTabView = ScaleTexViewTabView(context).apply {
         gravity = Gravity.CENTER
     }
-
     init {
         addView(boundSizeTextView)
         addView(dynamicSizeTextView)
-
     }
 }
 
@@ -92,15 +70,6 @@ abstract class TextScaleTabViewConfig(scale: TextScaleConfig = defaultScaleConfi
     FixedWidthTextTabViewConfig(
         scale
     )
-
-fun TabLayout.createTextScaleMediatorByTextView(
-    vp: ViewPager2,
-    config: TextScaleTabViewConfig
-): TabLayoutMediator {
-    val mediator = createMediatorByCustomTabView(vp, config)
-    addScaleAnim(config.scale)
-    return mediator
-}
 
 private fun TabLayout.addScaleAnim(config: TextScaleConfig = defaultScaleConfig) {
     val key = R.id.tag_tabLayout_scale_ext
@@ -174,6 +143,45 @@ private fun TabLayout.addScaleAnim(config: TextScaleConfig = defaultScaleConfig)
 
 }
 
+class ScaleTexViewTabView(context: Context) : AppCompatTextView(context) {
+    var skipRequestLayout = false
+    override fun requestLayout() {
+        if (!skipRequestLayout) {
+            super.requestLayout()
+        }
+    }
+}
+
+fun TabLayout.createMediator(
+    vp: ViewPager2,
+    onInit: (tab: TabLayout.Tab, position: Int) -> Unit
+): TabLayoutMediator {
+    return TabLayoutMediator(this, vp) { tab, pos ->
+        onInit(tab, pos)
+    }
+}
+
+fun <T : View> TabLayout.createMediatorByCustomTabView(
+    vp: ViewPager2,
+    config: CustomTabViewConfig<T>
+): TabLayoutMediator {
+    return createMediator(vp){tab,pos->
+        val tabView = config.getCustomView(tab.view.context)
+        tab.customView = tabView
+        config.onTabInit(tabView, pos)
+    }
+}
+
+
+fun TabLayout.createTextScaleMediatorByTextView(
+    vp: ViewPager2,
+    config: TextScaleTabViewConfig
+): TabLayoutMediator {
+    val mediator = createMediatorByCustomTabView(vp, config)
+    addScaleAnim(config.scale)
+    return mediator
+}
+
 fun TabLayout.addScaleTabByTextView(
     textList: List<String>,
     textColor: Int,
@@ -196,14 +204,5 @@ fun TabLayout.addScaleTabByTextView(
             tabView.dynamicSizeTextView.setTextColor(textColor)
         }
         addTab(tab)
-    }
-}
-
-class ScaleTexViewTabView(context: Context) : AppCompatTextView(context) {
-    var skipRequestLayout = false
-    override fun requestLayout() {
-        if (!skipRequestLayout) {
-            super.requestLayout()
-        }
     }
 }
