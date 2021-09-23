@@ -38,6 +38,14 @@
         app:tabIndicatorColor="#a0999999"
         android:background="#333333"
         android:layout_height="55dp"/>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl3"
+        android:layout_width="match_parent"
+        app:tabMode="scrollable"
+        app:tabIndicatorColor="#fff"
+        app:tabIndicatorHeight="15dp"
+        android:background="#8e8e8e"
+        android:layout_height="55dp"/>
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager2"
         android:background="@color/teal_700"

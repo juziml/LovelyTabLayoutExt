@@ -71,6 +71,13 @@ class ViewPager2Activity2 : AppCompatActivity() {
                 }
             })
         mediator2.attach()
+
+        val scaleConfig3 = TextScaleConfig(
+            onSelectTextSize = 18.dp,
+            onUnSelectTextSize = 12.dp,
+            switchBold = true
+        )
+        vb.tl3.addScaleTabByTextView(tabs.toList(),Color.YELLOW,scaleConfig3)
     }
 }
 
