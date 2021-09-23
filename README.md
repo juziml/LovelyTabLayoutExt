@@ -39,7 +39,7 @@ FlycoTabLayout 演示
 fun <T : View> TabLayout.createMediatorByCustomTabView(
     vp: ViewPager2,
     config: CustomTabViewConfig<T>
-): TabLayoutMediator {
+): TabLayoutMediator { 
     return TabLayoutMediator(this, vp) { tab, pos ->
         val tabView = config.getCustomView(tab.view.context)
         tab.customView = tabView

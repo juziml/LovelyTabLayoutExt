@@ -1,23 +1,12 @@
 package com.grock
 
-import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
-import android.util.TypedValue
-import android.view.LayoutInflater
-import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
-import com.grock.tc.R
 import com.grock.tc.databinding.ActViewpager2Binding
-import com.grock.tc.databinding.FragSimpleBinding
-import com.grock.tc.databinding.TabItemBinding
 
 /**
  *
@@ -43,48 +32,46 @@ class ViewPager2Activity2 : AppCompatActivity() {
         )
         vp.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
         vp.adapter = FragmentAdapter(this, list)
-        val scaleConfig = TextScaleConfig(
+
+        val scaleConfig1 = TextScaleConfig(
             onSelectTextSize = 18.dp,
             onUnSelectTextSize = 12.dp,
+            switchBold = false
         )
-       vb.tlNormal.createMediator(vb.viewPager2){tab, position ->
+
+        vb.tlNormal.createMediator(vb.viewPager2) { tab, position ->
             tab.text = tabs[position]
         }.attach()
 
         val mediator = vb.tl.createTextScaleMediatorByTextView(vb.viewPager2,
-            object : TextScaleTabViewConfig(scaleConfig) {
-                override fun onBoundTextViewInit(boundSizeTextView: TextView, position: Int) {
-                    boundSizeTextView.textSizePx = scaleConfig.onSelectTextSize
-                    boundSizeTextView.text = tabs[position]
+            object : TextScaleTabViewConfig(scaleConfig1) {
+                override fun getText(position: Int): String {
+                    return tabs[position]
                 }
-                override fun onVisibleTextViewInit(dynamicSizeTextView: TextView, position: Int) {
-                    dynamicSizeTextView.setTextColor(Color.WHITE)
-                    dynamicSizeTextView.text = tabs[position]
+
+                override fun onVisibleTextViewInit(tv: TextView) {
+                    tv.setTextColor(Color.WHITE)
                 }
             })
         mediator.attach()
-        val mediator2 = vb.tl2.createTextScaleMediatorByTextView(vb.viewPager2,
-            object : TextScaleTabViewConfig(scaleConfig) {
+        val scaleConfig2 = TextScaleConfig(
+            onSelectTextSize = 18.dp,
+            onUnSelectTextSize = 12.dp,
+            switchBold = true
+        )
 
-                override fun onBoundTextViewInit(boundSizeTextView: TextView, position: Int) {
-                    boundSizeTextView.textSizePx = scaleConfig.onSelectTextSize
-                    boundSizeTextView.text = tabs[position]
+        val mediator2 = vb.tl2.createTextScaleMediatorByTextView(vb.viewPager2,
+            object : TextScaleTabViewConfig(scaleConfig2) {
+                override fun getText(position: Int): String {
+                    return tabs[position]
                 }
 
-                override fun onVisibleTextViewInit(dynamicSizeTextView: TextView, position: Int) {
-                    dynamicSizeTextView.setTextColor(Color.WHITE)
-                    dynamicSizeTextView.text = tabs[position]
+                override fun onVisibleTextViewInit(tv: TextView) {
+                    tv.setTextColor(Color.WHITE)
                 }
             })
         mediator2.attach()
     }
 }
 
-val Int.dp get() = (this * Resources.getSystem().displayMetrics.density ).toInt()
-
-var TextView.textSizePx: Int
-    set(value) {
-        setTextSize(TypedValue.COMPLEX_UNIT_PX, value.toFloat())
-    }
-    get() = textSize.toInt()
 

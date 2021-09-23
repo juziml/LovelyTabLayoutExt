@@ -1,4 +1,3 @@
 <resources>
-    <!--键盘监听-->
-    <item name="tag_keyboard_tree_listener" type="id" />
+    <item name="tag_tabLayout_scale_ext" type="id" />
 </resources>

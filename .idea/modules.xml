@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LovelyTabLayoutExt.iml" filepath="$PROJECT_DIR$/.idea/modules/LovelyTabLayoutExt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/LovelyTabLayoutExt.iml" filepath="$PROJECT_DIR$/.idea/LovelyTabLayoutExt.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LovelyTabLayoutExt.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LovelyTabLayoutExt.app.iml" />
     </modules>
   </component>
