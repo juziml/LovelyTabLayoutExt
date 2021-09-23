@@ -177,9 +177,8 @@ fun TabLayout.createTextScaleMediatorByTextView(
     vp: ViewPager2,
     config: TextScaleTabViewConfig
 ): TabLayoutMediator {
-    val mediator = createMediatorByCustomTabView(vp, config)
     addScaleAnim(config.scale)
-    return mediator
+    return createMediatorByCustomTabView(vp, config)
 }
 
 fun TabLayout.addScaleTabByTextView(
