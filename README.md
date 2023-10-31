@@ -1,5 +1,5 @@
 
-`ViewPager2`正式推出已经一年多了，虽然不如3那样新潮，但是也不如老前辈`ViewPager`那样有众多开源库拥簇，比如它的灵魂伴侣`TabLayout`明显后援不足，好在`TabLayout`自身够硬！
+`ViewPager2`正式推出已经一年多了，既不如3那样新潮，也不如老前辈`ViewPager`那样有众多开源库拥簇，比如它的灵魂伴侣`TabLayout`明显后援不足，好在`TabLayout`自身够硬！
 
 ViewPager2灵魂伴侣是官方提供的：
 ```
